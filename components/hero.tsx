@@ -4,11 +4,10 @@ import axios from "axios";
 
 export default function Hero() {
   const [address, setAddress] = useState("");
-  const [response, setResponse] = useState(false);
 
   const tableData = [
     { property: "Network name", value: "Inco Network" },
-    { property: "New RPC URL", value: "https://testnet.inco.org/ " },
+    { property: "New RPC URL", value: "https://testnet.inco.org/ "},
     { property: "Chain ID", value: "9090" },
     { property: "Currency symbol", value: "Inco" },
     { property: "Block explorer URL", value: "https://explorer.inco.network/" },
@@ -38,9 +37,6 @@ export default function Hero() {
           },
         }
       );
-      if (response.data != null) {
-        setResponse(true);
-      }
 
       // Handle the response
       console.log("Response:", response.data);
@@ -78,59 +74,51 @@ export default function Hero() {
                 This will give you 0.5 inco faucet. Just put your address below
                 or connect wallet ↗
               </p>
-              {!response && (
-                <div
-                  className="max-w-xs mx-auto sm:max-w-none sm:flex sm:justify-center"
-                  data-aos="fade-up"
-                >
-                  <form className="w-full">
-                    <div className="flex flex-col sm:flex-row justify-center max-w-xs mx-auto sm:max-w-md lg:max-w-none">
-                      <input
-                        type="text"
-                        className="btn text-purple-600 bg-purple-100 hover:bg-white shadow "
-                        placeholder="Your Wallet Address"
-                        onChange={(e) => {
-                          setAddress(e.target.value);
-                        }}
-                      />
-                      <a
-                        className="w-3/4 appearance-none bg-purple-700 border border-purple-500 focus:border-purple-300 rounded-sm px-4 py-3 mb-2 sm:mb-0 sm:mr-2 text-white placeholder-purple-400"
-                        href="#0"
-                        onClick={getTokens}
-                      >
-                        Get Tokens
-                      </a>
-                    </div>
-                  </form>
-                </div>
-              )}
+              <div className="max-w-xs mx-auto sm:max-w-none sm:flex sm:justify-center" data-aos="fade-up">
+                <form className="w-full">
+                  <div className="flex flex-col sm:flex-row justify-center max-w-xs mx-auto sm:max-w-md lg:max-w-none">
+                    <input
+                      type="text"
+                      className="w-3/4 appearance-none bg-purple-700 border border-purple-500 focus:border-purple-300 rounded-sm px-4 py-3 mb-2 sm:mb-0 sm:mr-2 text-white placeholder-purple-400"
+                      placeholder="Your Wallet Address"
+                      onChange={(e) => {
+                        setAddress(e.target.value);
+                      }}
+                    />
+                    <a
+                      className="btn text-purple-600 bg-purple-100 hover:bg-white shadow"
+                      href="#0"
+                      onClick={getTokens}
+                    >
+                      Get Tokens
+                    </a>
+                  </div>
+                </form>
+              </div>
             </div>
 
             <div className="max-w-3xl mx-auto text-center pb-6">
-              {address == "" ? null : (
-                <p
-                  className="text-xl text-gray-400 mb-8"
-                  data-aos="fade-up"
-                  data-aos-delay="200"
+            {address=="" ? null :
+              <p
+                className="text-xl text-gray-400 mb-8"
+                data-aos="fade-up"
+                data-aos-delay="200"
+              >
+                Check Your Balance at {"  "}
+                <a
+                  href={`https://explorer.testnet.inco.org/address/${address}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="underline text-blue-500"
                 >
-                  Check Your Balance at {"  "}
-                  <a
-                    href={`https://explorer.testnet.inco.org/address/${address}`}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="underline text-blue-500"
-                  >
-                    Explorer
-                  </a>
-                </p>
-              )}
+                  Explorer
+                </a>
+              </p>}
             </div>
 
             <div className="max-w-screen-md mx-auto">
-              <div className="max-w-3xl mx-auto text-center">
-                <h1 className="h1 mb-4" data-aos="fade-up">
-                  Connect Metamask
-                </h1>
+            <div className="max-w-3xl mx-auto text-center">
+              <h1 className="h1 mb-4" data-aos="fade-up">Connect Metamask</h1>
               </div>
               <table className="table-auto w-full" data-aos="fade-up">
                 <thead>
@@ -142,15 +130,13 @@ export default function Hero() {
                 <tbody>
                   {tableData.map((row, index) => (
                     <tr key={index}>
-                      <td className="border px-4 py-2" data-aos="fade-up">
-                        {row.property}
-                      </td>
+                      <td className="border px-4 py-2" data-aos="fade-up">{row.property}</td>
                       <td
                         className="border px-4 py-2 cursor-pointer"
                         onClick={() => handleCellClick(row.value)}
                       >
                         <div className="flex items-center" data-aos="fade-up">
-                          <span>{row.value} 🔖</span>
+                          <span>{row.value}     🔖</span>
                         </div>
                       </td>
                     </tr>

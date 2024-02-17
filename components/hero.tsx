@@ -78,32 +78,32 @@ export default function Hero() {
                 This will give you 0.5 inco faucet. Just put your address below
                 or connect wallet ↗
               </p>
-              (!response &&
-              <div
-                className="max-w-xs mx-auto sm:max-w-none sm:flex sm:justify-center"
-                data-aos="fade-up"
-              >
-                <form className="w-full">
-                  <div className="flex flex-col sm:flex-row justify-center max-w-xs mx-auto sm:max-w-md lg:max-w-none">
-                    <input
-                      type="text"
-                      className="btn text-purple-600 bg-purple-100 hover:bg-white shadow "
-                      placeholder="Your Wallet Address"
-                      onChange={(e) => {
-                        setAddress(e.target.value);
-                      }}
-                    />
-                    <a
-                      className="w-3/4 appearance-none bg-purple-700 border border-purple-500 focus:border-purple-300 rounded-sm px-4 py-3 mb-2 sm:mb-0 sm:mr-2 text-white placeholder-purple-400"
-                      href="#0"
-                      onClick={getTokens}
-                    >
-                      Get Tokens
-                    </a>
-                  </div>
-                </form>
-              </div>
-              )
+              {!response && (
+                <div
+                  className="max-w-xs mx-auto sm:max-w-none sm:flex sm:justify-center"
+                  data-aos="fade-up"
+                >
+                  <form className="w-full">
+                    <div className="flex flex-col sm:flex-row justify-center max-w-xs mx-auto sm:max-w-md lg:max-w-none">
+                      <input
+                        type="text"
+                        className="btn text-purple-600 bg-purple-100 hover:bg-white shadow "
+                        placeholder="Your Wallet Address"
+                        onChange={(e) => {
+                          setAddress(e.target.value);
+                        }}
+                      />
+                      <a
+                        className="w-3/4 appearance-none bg-purple-700 border border-purple-500 focus:border-purple-300 rounded-sm px-4 py-3 mb-2 sm:mb-0 sm:mr-2 text-white placeholder-purple-400"
+                        href="#0"
+                        onClick={getTokens}
+                      >
+                        Get Tokens
+                      </a>
+                    </div>
+                  </form>
+                </div>
+              )}
             </div>
 
             <div className="max-w-3xl mx-auto text-center pb-6">

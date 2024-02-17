@@ -4,7 +4,7 @@ import axios from "axios";
 
 export default function Hero() {
   const [address, setAddress] = useState("");
-  const [string, setString] = useState("");
+  const [response, setResponse] = useState(false);
 
   const tableData = [
     { property: "Network name", value: "Inco Network" },
@@ -38,6 +38,9 @@ export default function Hero() {
           },
         }
       );
+      if(response.data != null){
+        setResponse(true);
+      }
 
       // Handle the response
       console.log("Response:", response.data);
@@ -75,6 +78,7 @@ export default function Hero() {
                 This will give you 0.5 inco faucet. Just put your address below
                 or connect wallet ↗
               </p>
+              (!response &&  
               <div className="max-w-xs mx-auto sm:max-w-none sm:flex sm:justify-center" data-aos="fade-up">
                 <form className="w-full">
                   <div className="flex flex-col sm:flex-row justify-center max-w-xs mx-auto sm:max-w-md lg:max-w-none">
@@ -87,7 +91,7 @@ export default function Hero() {
                       }}
                     />
                     <a
-                      className="btn text-purple-600 bg-purple-100 hover:bg-white shadow"
+                      className="btn text-purple-600 bg-purple-100 hover:bg-white shadow lg:max-w-none"
                       href="#0"
                       onClick={getTokens}
                     >
@@ -95,7 +99,7 @@ export default function Hero() {
                     </a>
                   </div>
                 </form>
-              </div>
+              </div>)
             </div>
 
             <div className="max-w-3xl mx-auto text-center pb-6">
